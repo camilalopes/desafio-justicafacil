@@ -13,7 +13,12 @@ RESULTADO_PATH = 'C:/Users/Camila/Desktop/resultado_hashes.csv'
 def lista_id_pdfs(data):
     param = {"voDiarioSearch.dataPubIni": data,
                 "voDiarioSearch.dataPubFim": data}
-    req = requests.get(URL_DATA, param)
+    try:
+        req = requests.get(URL_DATA, param)
+        req.raise_for_status()
+    except requests.exceptions.HTTPError as e:
+        raise ValueError(e)
+
     soup = BeautifulSoup(req.content, 'html.parser')
     links = soup.find_all('a')
 
@@ -35,7 +40,11 @@ def lista_hash_pdf(pdf_ids):
         param = {"id": pdf_id,
                 "tribunal":"TSE",
                 "captchaValidacao":"ok"}
-        req = requests.post(URL_PDF, params = param)
+        try:
+            req = requests.post(URL_PDF, params = param)
+            req.raise_for_status()
+        except requests.exceptions.HTTPError as e:
+            raise ValueError(e)
         #hash do pdf
         hash = hashlib.md5(req.content).hexdigest()
         lista_hash.append(hash)
@@ -60,7 +69,7 @@ def main():
     #data = '14/06/2017'
     hashes = lista_hash(data)
     print(hashes)
-    salva_csv(data, hashes)
+    salva_csv(data, hashes) #salva o resultado
 
 if __name__ == "__main__":
 	main()

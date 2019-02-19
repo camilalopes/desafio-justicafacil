@@ -13,12 +13,17 @@ RESULTADO_PATH = os.path.abspath(os.path.dirname(""))+'\\resultado_hashes.csv'
 
 '''Transforma a data passada em uma string no formato brasileiro de datas'''
 def formata_data(data):
-    data_str = '{}/{}/{}'.format(data.day, data.month, data.year)
+    data_str = data.strftime('%d/%m/%Y')
     return data_str
 
-'''Retorna a lista com o id dos pdfs a serem baixados de acordo com a data'''
+'''Verifica se a data é válida'''
+def valida_data(data):
+    if data > date.today():
+        raise ValueError('Uma data inválida foi passada')
+
+'''Retorna a lista com o id dos pdfs a serem baixados de acordo com a data passada'''
 def lista_id_pdfs(data):
-    #validaData()
+    valida_data(data)
     data_str = formata_data(data)
     param = {"voDiarioSearch.dataPubIni": data_str,
                 "voDiarioSearch.dataPubFim": data_str}

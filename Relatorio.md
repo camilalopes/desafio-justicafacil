@@ -34,6 +34,8 @@ Tive que pesquisar bastante coisa pra me certificar de como usar tudo que eu pre
 
 5. [Path genérico para salvar os resultados](http://www.devfuria.com.br/python/os-path/)
 
+6. [Formatação de data](https://pythonhelp.wordpress.com/2012/07/10/trabalhando-com-datas-e-horas-em-python-datetime/)
+
 
 ## Melhorias
 

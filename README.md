@@ -7,9 +7,13 @@ A descrição detalhada do desafio pode ser obtida [aqui](https://github.com/jus
 Os requisitos abaixo foram utilizados na construção da aplicação (requirements.txt)
 
 -Python
+
 -BeautifulSoup
+
 -Requests
+
 -Hashlib
+
 -Os
 
 ## To Run
@@ -24,6 +28,10 @@ git clone https://github.com/camilalopes/desafio-justicafacil.git
 
 4. Execute a aplicação
 
-## Questions?
+## Relatório
+
+O arquivo [Relatorio.md](Relatorio.md) contém algumas explicações e dificuldades do desenvolvimento do projeto e as fontes que foram utilizadas para consulta.
+
+## Questions
 
 Dúvidas e sugestões: kmilalopes10@gmail.com

@@ -16,6 +16,8 @@ Scripts podem ser inseridos na página de requisição através da API WebDriver
 
 Perdi um tempo precioso (:cry:) tentando fazer a injeção do meu JS funcionar através do webdriver com Selenium, sem sucesso. Depois de muitas horas tentando, comecei a pensar em outras formas de fazer a requisição do pdf. Dado que é um formulário de download do pdf é submetido via post comecei a pesquisar como fazer isso, e finalmente cheguei até o método post do requests (:sunglasses:). Depois que consegui fazer o download do pdf usando o requests com post foi só alegria, e a partir dai as demais etapas do projeto fluíram legal.
 
+Optei por receber um valor do tipo data, e depois transformá-lo na string a ser utilizada pela url da página, assumindo que o tratamento de erros neste caso se dá de forma mais adequada.
+
 ## Fontes Úteis
 
 Tive que pesquisar bastante coisa pra me certificar de como usar tudo que eu precisava pra fazer o projeto funcionar. Segue as minhas fontes:

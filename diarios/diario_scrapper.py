@@ -2,6 +2,7 @@ import requests
 import hashlib
 from bs4 import BeautifulSoup
 import os
+from datetime import date
 
 URL = 'http://inter03.tse.jus.br/sadJudDiarioDeJusticaConsulta/'
 URL_PDF = URL+'diario.do?action=downloadDiario'
@@ -10,10 +11,17 @@ URL_DATA = URL+'diario.do?action=buscarDiarios&page=diarioPageLastList.jsp&voDia
 #Arquivo que salva os resultados
 RESULTADO_PATH = os.path.abspath(os.path.dirname(""))+'\\resultado_hashes.csv'
 
+'''Transforma a data passada em uma string no formato brasileiro de datas'''
+def formata_data(data):
+    data_str = '{}/{}/{}'.format(data.day, data.month, data.year)
+    return data_str
+
 '''Retorna a lista com o id dos pdfs a serem baixados de acordo com a data'''
 def lista_id_pdfs(data):
-    param = {"voDiarioSearch.dataPubIni": data,
-                "voDiarioSearch.dataPubFim": data}
+    #validaData()
+    data_str = formata_data(data)
+    param = {"voDiarioSearch.dataPubIni": data_str,
+                "voDiarioSearch.dataPubFim": data_str}
     try:
         req = requests.get(URL_DATA, param)
         req.raise_for_status()
@@ -59,15 +67,15 @@ def lista_hash(data):
 
 '''Salva os resultados de maneira persistente em uma planilha'''
 def salva_csv(data, lista_hash):
+    data_str = formata_data(data)
     arq = open(RESULTADO_PATH, 'w') # 'a' tbm pode ser usado se quiser manter o conteudo do arq anterior
     linhas_de_texto = ['data', 'hash pdf']
     for hash in lista_hash:
-        arq.writelines(';'.join([data, hash]))
+        arq.writelines(';'.join([data_str, hash]))
     arq.close()
 
 def main():
-    data = '01/02/2018'
-    #data = '14/06/2017'
+    data = date.today()
     hashes = lista_hash(data)
     print(hashes)
     salva_csv(data, hashes) #salva o resultado

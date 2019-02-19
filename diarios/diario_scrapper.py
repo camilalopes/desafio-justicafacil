@@ -1,13 +1,14 @@
 import requests
 import hashlib
 from bs4 import BeautifulSoup
+import os
 
 URL = 'http://inter03.tse.jus.br/sadJudDiarioDeJusticaConsulta/'
 URL_PDF = URL+'diario.do?action=downloadDiario'
 URL_DATA = URL+'diario.do?action=buscarDiarios&page=diarioPageLastList.jsp&voDiarioSearch.tribunal=TSE&voDiarioSearch.calendario=false'
 
 #Arquivo que salva os resultados
-RESULTADO_PATH = 'C:/Users/Camila/Desktop/resultado_hashes.csv'
+RESULTADO_PATH = os.path.abspath(os.path.dirname(""))+'\\resultado_hashes.csv'
 
 '''Retorna a lista com o id dos pdfs a serem baixados de acordo com a data'''
 def lista_id_pdfs(data):

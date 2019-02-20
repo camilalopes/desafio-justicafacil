@@ -4,7 +4,7 @@ Este repositório é destinado para a resolução do desafio para vaga de estág
 A descrição detalhada do desafio pode ser obtida [aqui](https://github.com/justica-facil/desafio-estagio)
 
 ## Requisitos
-Os requisitos abaixo foram utilizados na construção da aplicação (requirements.txt)
+Os requisitos abaixo foram utilizados na construção da aplicação
 
 -Python\\
 -BeautifulSoup\\

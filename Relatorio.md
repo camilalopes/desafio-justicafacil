@@ -14,9 +14,9 @@ document.getElementById("formDocumentoDownload").submit();
 
 Scripts podem ser inseridos na página de requisição através da API WebDriver do [Selenium](https://intoli.com/blog/javascript-injection/). Entretanto, há um problema com essa abordagem, nem todos os métodos de injeção JavaScript se comportam adequadamente. Alguns executam seu código JavaScript antes que a página seja analisada pelo navegador, enquanto outros aguardam até que os eventos DOMContentLoaded ou de carregamento sejam acionados. Sendo que, o último comportamento pode ser muito problemático em situações em que é importante que seu código seja executado antes de qualquer JavaScript incluído em uma página.
 
-Perdi um tempo precioso (:cry:) tentando fazer a injeção do meu JS funcionar através do webdriver com Selenium, sem sucesso. Depois de muitas horas tentando, comecei a pensar em outras formas de fazer a requisição do pdf. Dado que é um formulário de download do pdf é submetido via post comecei a pesquisar como fazer isso, e finalmente cheguei até o método post do requests (:sunglasses:). Depois que consegui fazer o download do pdf usando o requests com post foi só alegria, e a partir dai as demais etapas do projeto fluíram legal.
+Perdi um tempo precioso tentando fazer a injeção do meu JS funcionar através do webdriver com Selenium, sem sucesso :cry:. Depois de muitas horas tentando, comecei a pensar em outras formas de fazer a requisição do pdf. Dado que é um formulário de download do pdf é submetido via post comecei a pesquisar como fazer isso, e finalmente cheguei até o método post do requests :sunglasses:. Depois que consegui fazer o download do pdf usando o requests com post foi só alegria, e a partir dai as demais etapas do projeto fluíram legal.
 
-Optei por receber um valor do tipo data, e depois transformá-lo na string a ser utilizada pela url da página, assumindo que o tratamento de erros neste caso se dá de forma mais adequada.
+Optei por receber um valor do tipo data na função principal, e depois transformá-lo na string a ser utilizada pela url da página, assumindo que o tratamento de erros neste caso se dá de forma mais adequada.
 
 ## Fontes Úteis
 
@@ -39,4 +39,4 @@ Tive que pesquisar bastante coisa pra me certificar de como usar tudo que eu pre
 
 ## Melhorias
 
-...
+Acredito que faltou ampliar a quantidade de testes, o tempo que tive acabou sendo mal aproveitado, consequentemente deixei a automatização dos testes para o final do projeto.

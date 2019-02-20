@@ -8,7 +8,7 @@ URL = 'http://inter03.tse.jus.br/sadJudDiarioDeJusticaConsulta/'
 URL_PDF = URL+'diario.do?action=downloadDiario'
 URL_DATA = URL+'diario.do?action=buscarDiarios&page=diarioPageLastList.jsp&voDiarioSearch.tribunal=TSE&voDiarioSearch.calendario=false'
 
-#Arquivo que salva os resultados
+#Arquivo onde o resultado pode ser salvado
 RESULTADO_PATH = os.path.abspath(os.path.dirname(""))+'\\resultado_hashes.csv'
 
 '''Transforma a data passada em uma string no formato brasileiro de datas'''

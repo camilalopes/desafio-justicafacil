@@ -6,15 +6,12 @@ A descrição detalhada do desafio pode ser obtida [aqui](https://github.com/jus
 ## Requisitos
 Os requisitos abaixo foram utilizados na construção da aplicação (requirements.txt)
 
--Python
-
--BeautifulSoup
-
--Requests
-
--Hashlib
-
--Os
+-Python\\
+-BeautifulSoup\\
+-Requests\\
+-Hashlib\\
+-Os\\
+-Date
 
 ## To Run
 

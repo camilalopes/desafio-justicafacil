@@ -3,6 +3,8 @@ import hashlib
 from bs4 import BeautifulSoup
 import os
 from datetime import date
+from datetime import datetime
+import sys
 
 URL = 'http://inter03.tse.jus.br/sadJudDiarioDeJusticaConsulta/'
 URL_PDF = URL+'diario.do?action=downloadDiario'
@@ -11,22 +13,20 @@ URL_DATA = URL+'diario.do?action=buscarDiarios&page=diarioPageLastList.jsp&voDia
 #Arquivo onde o resultado pode ser salvado
 RESULTADO_PATH = os.path.abspath(os.path.dirname(""))+'\\resultado_hashes.csv'
 
-def formata_data(data):
-    '''Transforma a data passada em uma string no formato brasileiro de datas'''
-    data_str = data.strftime('%d/%m/%Y')
-    return data_str
-
 def valida_data(data):
     '''Verifica se a data é válida'''
-    if data > date.today():
-        raise ValueError('Uma data inválida foi passada')
+    try:
+        data_aux = datetime.strptime(data, "%d/%m/%Y").date()
+    except ValueError:
+        raise ValueError("Uma data inválida foi passada. Formato: dd/mm/AAAA")
+    if data_aux > date.today():
+        raise ValueError('Uma data inválida foi passada.')
 
 def lista_id_pdfs(data):
     '''Retorna a lista com o id dos pdfs a serem baixados de acordo com a data passada'''
     valida_data(data)
-    data_str = formata_data(data)
-    param = {"voDiarioSearch.dataPubIni": data_str,
-                "voDiarioSearch.dataPubFim": data_str}
+    param = {"voDiarioSearch.dataPubIni": data,
+                "voDiarioSearch.dataPubFim": data}
     try:
         req = requests.get(URL_DATA, param)
         req.raise_for_status()
@@ -72,17 +72,16 @@ def lista_hash(data):
 
 def salva_csv(data, lista_hash):
     '''Salva os resultados de maneira persistente em uma planilha'''
-    data_str = formata_data(data)
     arq = open(RESULTADO_PATH, 'w') # 'a' tbm pode ser usado se quiser manter o conteudo do arq anterior
     linhas_de_texto = ['data', 'hash pdf']
     for hash in lista_hash:
-        arq.writelines(';'.join([data_str, hash]))
+        arq.writelines(';'.join([data, hash]))
     arq.close()
 
 def main():
-    data = date.today()
+    data = sys.argv[1]
     hashes = lista_hash(data)
-    #print(hashes)
+    print(hashes)
     salva_csv(data, hashes) #salva o resultado
 
 if __name__ == "__main__":

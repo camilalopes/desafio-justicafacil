@@ -28,7 +28,7 @@ git clone https://github.com/camilalopes/desafio-justicafacil.git
 ```
 3. No diretório do projeto execute  `pip install -r requirements.txt` para instalar todos os requisitos
 
-4. Execute a aplicação
+4. No diretório 'diarios' execute `python diario_scrapper.py dd/mm/YYY` passando uma data válida como parâmetro
 
 ## Relatório
 
